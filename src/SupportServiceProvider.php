@@ -13,7 +13,6 @@ class SupportServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        dump('jest');die();
         $this->app['view']->addNamespace('theme', ThemeBladeDirectory::get());
     }
 
