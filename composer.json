@@ -1,0 +1,26 @@
+{
+    "name": "lapress/support",
+    "authors": [
+        {
+            "name": "seszcze",
+            "email": "sebastian@ably.pl"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "LaPress\\Support\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaPress\\Support\\SupportServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
