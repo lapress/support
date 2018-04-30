@@ -23,6 +23,5 @@ class SupportServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        dump('jest');die();
     }
 }
