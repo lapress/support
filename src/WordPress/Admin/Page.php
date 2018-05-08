@@ -16,5 +16,5 @@ interface Page
     /**
      * @return Page
      */
-    public function create();
+//    public function create();
 }

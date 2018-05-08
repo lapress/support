@@ -59,13 +59,15 @@ class TopLevelPage implements Page
         return array_merge([$this->key], $this->pages);
     }
 
-    public function create(string $key = null, $pages = [])
+    public static function create(string $key = null, $pages = [])
     {
-        if (self::isStatic()) {
-            return static::make($key, $pages)
-                         ->create();
-        }
+        return static::make($key, $pages)
+                     ->_create();
 
+    }
+
+    public function _create()
+    {
         add_action('admin_menu', [$this, 'register']);
 
         return $this;
