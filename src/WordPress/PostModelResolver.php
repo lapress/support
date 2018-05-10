@@ -29,7 +29,14 @@ class PostModelResolver
      */
     public function resolve()
     {
-        $class = 'App\\'.ucfirst($this->getPostType());
+        $postType = ucfirst($this->getPostType());
+        $class = 'App\\'.$postType;
+
+        if (class_exists($class)) {
+            return $class;
+        }
+
+        $class = 'LaPress\\Models\\'.$postType;
 
         if (class_exists($class)) {
             return $class;
