@@ -18,7 +18,7 @@ class ComposerScripts
     public static function postAutoload(Event $event)
     {
         foreach (static::SCRIPTS as $script) {
-           $script($event);
+           app($script)->handle($event);
         }
     }
 }
