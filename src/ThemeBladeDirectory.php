@@ -13,6 +13,8 @@ class ThemeBladeDirectory
      */
     public static function get(): string
     {
-        return storage_path().'/../theme/'.config('wordpress.theme.views');
+        return themes(
+            config('wordpress.theme.active').'/'.config('wordpress.theme.views')
+        );
     }
 }
