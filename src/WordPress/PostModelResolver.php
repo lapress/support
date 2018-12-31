@@ -3,7 +3,7 @@
 namespace LaPress\Support\WordPress;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Models\Post;
 
 /**
  * @author    Sebastian Szczepański
@@ -30,7 +30,7 @@ class PostModelResolver
     public function resolve()
     {
         $postType = ucfirst($this->getPostType());
-        $class = 'App\\'.$postType;
+        $class = 'App\\Models\\'.$postType;
 
         if (class_exists($class)) {
             return $class;
