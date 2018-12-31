@@ -146,7 +146,6 @@ if (!function_exists('repository')) {
     }
 }
 
-
 if (!function_exists('menu')) {
     function menu(string $location)
     {
