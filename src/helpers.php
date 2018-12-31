@@ -4,7 +4,7 @@ use LaPress\Models\Post;
 use LaPress\Models\Repositories\Repository;
 
 if (!function_exists('wordpress_path')) {
-    function wordpress_path($path)
+    function wordpress_path($path = null)
     {
         $path = str_replace('%20', ' ', $path);
 
@@ -112,12 +112,22 @@ if (!function_exists('var_log')) {
     }
 }
 
+
+if (!function_exists('themes')) {
+    function themes($path = '')
+    {
+        return resource_path('themes/'.$path);
+    }
+}
+
+
 if (!function_exists('theme')) {
     function theme($path)
     {
-        return asset('theme/dist/'.$path);
+        return asset(config('wordpress.theme.active').'/dist/'.$path);
     }
 }
+
 
 if (!function_exists('repository')) {
     function repository($name)
@@ -135,7 +145,6 @@ if (!function_exists('repository')) {
         return new Repository(app($key));
     }
 }
-
 
 if (!function_exists('menu')) {
     function menu(string $location)
