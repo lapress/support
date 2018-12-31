@@ -122,7 +122,7 @@ if (!function_exists('themes')) {
 
 
 if (!function_exists('theme')) {
-    function theme($path)
+    function theme_path($path)
     {
         return asset(config('wordpress.theme.active').'/dist/'.$path);
     }
@@ -150,5 +150,19 @@ if (!function_exists('menu')) {
     function menu(string $location)
     {
         return repository(LaPress\Models\Menu::class)->location($location)->first();
+    }
+}
+
+if (!function_exists('theme')) {
+    function theme()
+    {
+        return config('wordpress.theme.active') ?: 'theme';
+    }
+}
+
+if (!function_exists('theme_view')) {
+    function theme_view(string $view)
+    {
+        return theme().'::'.$view;
     }
 }
