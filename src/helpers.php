@@ -8,7 +8,7 @@ if (!function_exists('wordpress_path')) {
     {
         $path = str_replace('%20', ' ', $path);
 
-        return storage_path('wordpress/'.$path);
+        return storage_path('framework/wordpress/'.$path);
     }
 }
 
