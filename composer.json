@@ -6,7 +6,9 @@
             "email": "sebastian@ably.pl"
         }
     ],
-    "require": {},
+    "require": {
+        "artesaos/seotools": "^0.12.1"
+    },
     "autoload": {
         "psr-4": {
             "LaPress\\Support\\": "src/"
