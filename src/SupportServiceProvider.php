@@ -14,7 +14,7 @@ class SupportServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app['view']->addNamespace(
-            config('wordpress.theme.active'),
+            'theme',
             ThemeBladeDirectory::get()
         );
     }

@@ -163,7 +163,7 @@ if (!function_exists('theme')) {
 if (!function_exists('theme_view')) {
     function theme_view(string $view)
     {
-        return theme().'::'.$view;
+        return 'theme::'.$view;
     }
 }
 
