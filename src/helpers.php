@@ -170,6 +170,6 @@ if (!function_exists('theme_view')) {
 if (!function_exists('theme_mix')) {
     function theme_mix($path)
     {
-        return mix($path, '/'.theme().'/public');
+        return mix($path, '/'.theme().'/dist');
     }
 }
