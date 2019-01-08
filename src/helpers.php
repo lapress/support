@@ -166,3 +166,10 @@ if (!function_exists('theme_view')) {
         return theme().'::'.$view;
     }
 }
+
+if (!function_exists('theme_mix')) {
+    function theme_mix($path)
+    {
+        return mix($path, '/'.theme().'/public');
+    }
+}
