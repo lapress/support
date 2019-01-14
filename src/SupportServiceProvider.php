@@ -2,6 +2,7 @@
 
 namespace LaPress\Support;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class SupportServiceProvider extends ServiceProvider
@@ -17,6 +18,8 @@ class SupportServiceProvider extends ServiceProvider
             'theme',
             ThemeBladeDirectory::get()
         );
+
+        Blade::include('theme::components.image', 'image');
     }
 
     /**

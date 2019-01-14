@@ -48,7 +48,7 @@ class PostModelResolver
     /**
      * @return string
      */
-    public function getPostType()
+    public function getPostType(): string
     {
         $uri = str_after($this->request->getRequestUri(), '/');
         $uri = str_before($uri, '/');
