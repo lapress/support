@@ -149,7 +149,7 @@ if (!function_exists('repository')) {
 if (!function_exists('menu')) {
     function menu(string $location)
     {
-        return repository(LaPress\Models\Menu::class)->location($location)->first();
+        return repository(LaPress\Models\Menu::class)->location($location)->first() ?: new LaPress\Models\Menu();
     }
 }
 
