@@ -4,6 +4,7 @@ namespace LaPress\Support\WordPress;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @author    Sebastian Szczepański
@@ -54,6 +55,13 @@ class PostModelResolver
         $uri = str_before($uri, '/');
         $uri = str_before($uri, '?');
 
-        return str_singular($uri);
+        $map = Cache::rememberForever('post.types.map', function () use ($uri){
+            return collect(config('wordpress.posts.types'))->mapWithKeys(function ($class, $key) use($uri) {
+                $class = new $class;
+                return [$class->getSlug() => $key];
+            })->toArray();
+        });
+
+        return $map[$uri] ?? str_singular($uri);
     }
 }
