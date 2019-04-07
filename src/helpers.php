@@ -121,7 +121,7 @@ if (!function_exists('themes')) {
 }
 
 
-if (!function_exists('theme')) {
+if (!function_exists('theme_path')) {
     function theme_path($path)
     {
         return asset(config('wordpress.theme.active').'/dist/'.$path);
@@ -156,7 +156,7 @@ if (!function_exists('menu')) {
 if (!function_exists('theme')) {
     function theme()
     {
-        return config('wordpress.theme.active') ?: 'theme';
+        return \LaPress\Support\WordPress\Theme::get();
     }
 }
 
