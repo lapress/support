@@ -121,8 +121,8 @@ if (!function_exists('themes')) {
 }
 
 
-if (!function_exists('theme')) {
-    function theme($path)
+if (!function_exists('theme_path')) {
+    function theme_path($path)
     {
         return asset(config('wordpress.theme.active').'/dist/'.$path);
     }
@@ -149,6 +149,27 @@ if (!function_exists('repository')) {
 if (!function_exists('menu')) {
     function menu(string $location)
     {
-        return repository(LaPress\Models\Menu::class)->location($location)->first();
+        return repository(LaPress\Models\Menu::class)->location($location)->first() ?: new LaPress\Models\Menu();
+    }
+}
+
+if (!function_exists('theme')) {
+    function theme()
+    {
+        return \LaPress\Support\WordPress\Theme::get();
+    }
+}
+
+if (!function_exists('theme_view')) {
+    function theme_view(string $view)
+    {
+        return 'theme::'.$view;
+    }
+}
+
+if (!function_exists('theme_mix')) {
+    function theme_mix($path)
+    {
+        return mix($path, '/'.theme().'/dist');
     }
 }
