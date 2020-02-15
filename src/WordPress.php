@@ -1,6 +1,10 @@
 <?php
 
 namespace LaPress\Support;
+
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+
 /**
  * @author    Sebastian Szczepański
  * @copyright ably
@@ -53,7 +57,7 @@ class WordPress
      */
     public static function globals($script_path)
     {
-        return array_get(static::scriptGlobals(), $script_path);
+        return Arr::get(static::scriptGlobals(), $script_path);
     }
 
     /**
@@ -65,15 +69,33 @@ class WordPress
     }
 
     /**
+     * @param string $path
+     * @return string
+     */
+    public static function path(string $path = '')
+    {
+        $path = str_replace('%20', ' ', $path);
+        $path = Str::startsWith($path, '/') ? $path : '/'.$path;
+        $basePath = config('wordpress.core') ?: base_path('../wordpress');
+
+        return str_replace('//', '/', $basePath.$path);
+    }
+
+    public static function content($path = '')
+    {
+        return base_path('../content'.$path);
+    }
+
+    /**
      * @param $plugin
      * @return bool|string
      */
     public static function pluginPath($plugin)
     {
-        $path = wordpress_path('wp-content/plugins/').$plugin.'/'.$plugin.'.php';
+        $path = static::path('wp-content/plugins/').$plugin.'/'.$plugin.'.php';
 
         if (!file_exists($path)) {
-            $path = wordpress_path('wp-content/plugins/').$plugin.'.php';
+            $path = static::path('wp-content/plugins/').$plugin.'.php';
 
             if (!file_exists($path)) {
                 return false;
@@ -97,7 +119,7 @@ class WordPress
      */
     public static function themePath($theme)
     {
-        $path = wordpress_path('wp-content/themes/').$theme;
+        $path = static::path('wp-content/themes/'.$theme);
 
         if (!is_dir($path)) {
             return false;
@@ -145,7 +167,7 @@ class WordPress
                 throw new \Exception('Miss configuration.');
             }
 
-            $globals = array_get(static::$definition['blog_admin_scripts'], $path, []);
+            $globals = Arr::get(static::$definition['blog_admin_scripts'], $path, []);
 
             $script_globals['wp-admin/network/'.$path] = array_merge($globals, $additional_globals);
         }
