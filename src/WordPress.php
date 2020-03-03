@@ -108,7 +108,7 @@ class WordPress
     /**
      * @return string
      */
-    public static function activetheme_path()
+    public static function activetheme()
     {
         return get_template();
     }
