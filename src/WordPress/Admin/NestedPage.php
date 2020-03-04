@@ -2,7 +2,8 @@
 
 namespace LaPress\Support\WordPress\Admin;
 
-use LaPress\Models\Option;
+use LaPress\Database\Models\Option;
+use Illuminate\Support\Str;
 
 /**
  * @author    Sebastian Szczepański
@@ -22,7 +23,7 @@ class NestedPage implements Page
     public function __construct(string $parentKey, string $key)
     {
         $this->parentKey = $parentKey;
-        $this->key = str_slug($key);
+        $this->key = Str::slug($key);
 
         add_action('admin_init', [$this, 'build']);
     }

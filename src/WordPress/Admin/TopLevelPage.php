@@ -2,6 +2,8 @@
 
 namespace LaPress\Support\WordPress\Admin;
 
+use Illuminate\Support\Str;
+
 /**
  * @author    Sebastian Szczepański
  * @copyright ably
@@ -19,7 +21,7 @@ class TopLevelPage implements Page
      */
     public function __construct(string $key)
     {
-        $this->key = str_slug($key);
+        $this->key = Str::slug($key);
     }
 
     public function register()
@@ -33,7 +35,7 @@ class TopLevelPage implements Page
             $this->getIcon(),
             $this->getPosition()
         );
-        
+
         $this->addSubPages();
     }
 

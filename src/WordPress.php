@@ -83,7 +83,7 @@ class WordPress
 
     public static function content($path = '')
     {
-        return base_path('../content'.$path);
+        return base_path('../content/'.$path);
     }
 
     /**

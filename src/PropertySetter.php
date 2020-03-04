@@ -2,6 +2,8 @@
 
 namespace LaPress\Support;
 
+use Illuminate\Support\Str;
+
 /**
  * @author    Sebastian Szczepański
  * @copyright ably
@@ -36,6 +38,6 @@ class PropertySetter
      */
     public function getMethodName($key): string
     {
-        return sprintf('set%s', camel_case($key));
+        return sprintf('set%s', Str::camel($key));
     }
 }
