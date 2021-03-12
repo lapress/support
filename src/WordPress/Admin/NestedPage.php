@@ -103,7 +103,6 @@ class NestedPage implements Page
     {
         $request = app('request');
         $keyName = '__'.$this->key;
-
         if ($this->saving()) {
             foreach ($request->get($keyName) as $k => $data) {
                 Option::set($keyName.':'.$k, $data);
